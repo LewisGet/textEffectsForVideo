@@ -131,9 +131,32 @@
 
     ljText.textBreaker = function (value) {
         var returnValue = "";
+        var groupEnable = false;
+        var groupContent = "";
 
         for (var index = 0; index < value.length; index++)
         {
+            if ("{" == value[index])
+            {
+                groupEnable = true;
+                continue;
+            }
+
+            if (groupEnable && "}" == value[index])
+            {
+                returnValue += "<span>" + groupContent + "</span>";
+                groupContent = "";
+
+                continue;
+            }
+
+            if (groupEnable)
+            {
+                groupContent += value[index];
+
+                continue;
+            }
+
             returnValue += "<span>" + value[index] + "</span>";
         }
 
