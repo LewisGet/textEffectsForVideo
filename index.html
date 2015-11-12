@@ -59,6 +59,14 @@
             <input type="text" class="input form-control" id="inputColor" placeholder="color" value="#fff">
         </div>
         <div class="form-group">
+            <label for="inputStrokeColor">stroke color</label>
+            <input type="text" class="input form-control" id="inputStrokeColor" placeholder="stroke color" value="#000">
+        </div>
+        <div class="form-group">
+            <label for="inputStrokeWidth">StrokeWidth</label>
+            <input type="text" class="input form-control" id="inputStrokeWidth" placeholder="stroke width" value="1px">
+        </div>
+        <div class="form-group">
             <label for="inputShadow">Shadow</label>
             <input type="text" class="input form-control" id="inputShadow" placeholder="shadow like 1px 0 1px #000, -1px 0 1px #000, 0 -1px 1px #000, 0 1px 1px #000" value="">
         </div>
@@ -92,6 +100,10 @@
         window.displayText.style.lineHeight = window.inputLineHeight.value;
 
         window.displayText.style.textShadow = inputShadow.value;
+
+        displayText.style.webkitTextStrokeWidth = inputStrokeWidth.value;
+
+        displayText.style.webkitTextStrokeColor = inputStrokeColor.value;
 
         window.displayText.innerHTML = ljText.textBreaker(window.inputText.value);
     };
