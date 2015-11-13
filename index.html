@@ -23,13 +23,13 @@
             padding-top: 15px;
         }
 
-        #displayText
+        #displayBox
         {
             text-align: center;
             vertical-align: middle;
         }
 
-        #displayText span
+        #displayBox span
         {
             position: relative;
         }
@@ -81,8 +81,9 @@
     </div>
     <table id="display" class="col-xs-10">
         <tr>
-            <td id="displayText">
-                some display
+            <td id="displayBox">
+                <div id="displayText">some display</div>
+                <div id="cover"></div>
             </td>
         </tr>
     </table>
@@ -106,6 +107,11 @@
         displayText.style.webkitTextStrokeColor = inputStrokeColor.value;
 
         window.displayText.innerHTML = ljText.textBreaker(window.inputText.value);
+
+        window.cover.setAttribute("style", displayText.getAttribute("style"));
+        window.cover.style.position = "relative";
+        window.cover.style.top = "-" + (displayText.offsetHeight).toString() + "px";
+        window.cover.style.webkitTextStrokeWidth = "0px";
     };
 
     ljText.showAnimate = function () {
@@ -146,6 +152,8 @@
                 allWord[index].style.left = "-" + inputStrong.value;
             }
         }
+
+        window.cover.innerHTML = window.displayText.innerHTML;
     };
 
     ljText.textBreaker = function (value) {
